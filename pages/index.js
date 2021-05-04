@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import Layout from "../Components/Layout";
 
 //Components
-import FilmCard from "../components/FilmCard";
+import FilmCard from "../Components/FilmCard";
 import Carousel from "../Components/Carousel";
 import NavBar from "../Components/NavBar";
 
