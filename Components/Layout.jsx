@@ -29,7 +29,10 @@ const Layout = ({ children, title }) => {
           property="og:description"
           content="Moviepack is a movie app that gives info about all the movies in the world. You can check trending, upcoming, popular movies from Moviepack, and also you can search for your favorite movie."
         />
-        <meta property="og:image" content="./images/banner.jpg" />
+        <meta
+          property="og:image"
+          content="https://moviepack.vercel.app//images/banner.jpg"
+        />
 
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link

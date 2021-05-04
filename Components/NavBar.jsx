@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <Bar>
       <div>
-        <img src="./Images/logo.png" alt="Moviepack LOGO" />
+        <img src="./images/logo.png" alt="Moviepack LOGO" />
 
         <div>
           <Link href="/about-us">
