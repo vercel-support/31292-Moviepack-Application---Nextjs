@@ -21,7 +21,7 @@ const Layout = ({ children, title }) => {
           content="movies, movie app, upcoming movies, popular movies, movies near me"
         />
         <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
 
         <meta property="og:title" content="MoviePack" />
