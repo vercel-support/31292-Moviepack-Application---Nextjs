@@ -24,7 +24,11 @@ const Layout = ({ children, title }) => {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
 
-        <meta property="og:title" content="MoviePack" />
+        <meta
+          property="og:title"
+          content="MoviePack - Know about Movies! | Upcomming Movies | Popular Movies |
+          Search your favourite movie!"
+        />
         <meta
           property="og:description"
           content="Moviepack is a movie app that gives info about all the movies in the world. You can check trending, upcoming, popular movies from Moviepack, and also you can search for your favorite movie."
