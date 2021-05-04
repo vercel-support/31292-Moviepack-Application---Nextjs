@@ -6,13 +6,13 @@ import Link from "next/link";
 
 //Redux
 import { useDispatch } from "react-redux";
-import { show_search_bar } from "../Redux/Actions/searchBarAction";
+// import { show_search_bar } from "../Redux/Actions/searchBarAction";
 
 function NavBar() {
   const dispatch = useDispatch();
 
   const clickHandler = () => {
-    dispatch(show_search_bar());
+    // dispatch(show_search_bar());
   };
 
   return (

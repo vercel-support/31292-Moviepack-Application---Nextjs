@@ -5,6 +5,7 @@ import ReactGA from "react-ga";
 import { useRouter } from "next/dist/client/router";
 import { PageAnims } from "../utils/transitions";
 import { motion } from "framer-motion";
+import Footer from "../Components/Footer";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }) {
         exit="exit"
       >
         <Component {...pageProps} />
+        <Footer />
       </motion.div>
     </>
   );
