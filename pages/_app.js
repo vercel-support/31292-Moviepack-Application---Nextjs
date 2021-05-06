@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       ReactGA.set({ page: url });
       ReactGA.pageview(url);
     };
-    ReactGA.initialize("G-1E5Z9B5WN7", { debug: false });
+    ReactGA.initialize("G-X166MGGPDE", { debug: false });
     ReactGA.set({ page: router.pathname });
     ReactGA.pageview(router.pathname);
     router.events.on("routeChangeComplete", handleRouteChange);
