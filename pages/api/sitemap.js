@@ -38,7 +38,7 @@ export default async (req, res) => {
     });
 
     // Add other pages
-    const pages = ["/about-us"];
+    const pages = ["/", "/about-us"];
     pages.map((url) => {
       links.push({
         url,
