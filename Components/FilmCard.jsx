@@ -7,8 +7,6 @@ import Image from "next/image";
 import { truncateName } from "../utils/configurations";
 
 function FilmCard({ id, name, rating, poster }) {
-  const clickHandler = () => {};
-
   return (
     <Outer>
       <Filmcard variants={filmCardPopup} initial="hidden" animate="show">
@@ -29,9 +27,12 @@ function FilmCard({ id, name, rating, poster }) {
           <img src="/images/star.svg" alt="" />
           <p> {rating} </p>
         </Rating>
-        <Link href={`/movies/${id}`} as={`/movies/${id}`}>
+        <Link
+          href={`/movies/${id}?name=${name.replace(/ /g, "_")}`}
+          as={`/movies/${id}?name=${name.replace(/ /g, "_")}`}
+        >
           <a>
-            <button onClick={clickHandler}> More Details </button>
+            <button> More Details </button>
           </a>
         </Link>
       </Filmcard>
