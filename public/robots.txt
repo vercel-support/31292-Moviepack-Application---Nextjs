@@ -1,2 +1,4 @@
+Sitemap: https://moviepack.vercel.app/api/sitemap
+
 User-Agent: *
 Allow: /
