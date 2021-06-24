@@ -14,9 +14,7 @@ const createSitemap = (allMovies) => `<?xml version="1.0" encoding="UTF-8"?>
           .map((movie) => {
             return `
                     <url>
-                        <loc>${`${hostname}/movies/${
-                          movie.id
-                        }?name=${movie.name.replace(/&/g, "&amp;")}`}</loc>
+                        <loc>${`${hostname}/movies/${movie.id}`}</loc>
                         
                     </url>
                 `;
