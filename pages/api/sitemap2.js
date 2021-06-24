@@ -1,12 +1,14 @@
-import { SitemapStream, streamToPromise } from "sitemap";
-import axios from "axios";
-import {
+const { SitemapStream, streamToPromise } = require("sitemap");
+const axios = require("axios");
+const {
   trending_movies_url,
   now_playing_url,
   upcomming_url,
-} from "../../utils/api";
+} = "../../utils/api";
+const fs = require("fs");
+const prettier = require("prettier");
 
-export default async (req, res) => {
+const createSiteMap = async (req, res) => {
   try {
     const smStream = new SitemapStream({
       hostname: `https://${req.headers.host}`,
@@ -69,8 +71,11 @@ export default async (req, res) => {
 
     // Display output to user
     res.end(sitemapOutput);
+    fs.writeFileSync("public/sitemap.xml", sitemapOutput);
   } catch (e) {
     console.log(e);
     res.send(JSON.stringify(e));
   }
 };
+
+createSiteMap();

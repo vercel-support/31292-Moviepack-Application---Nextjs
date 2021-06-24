@@ -1,19 +1,29 @@
 const { SitemapStream, streamToPromise } = require("sitemap");
-const { Readable } = require("stream");
-import axios from "axios";
-import {
+const axios = require("axios");
+const {
   trending_movies_url,
   now_playing_url,
   upcomming_url,
-} from "../../utils/api";
+} = require("../utils/api");
+const fs = require("fs");
+const prettier = require("prettier");
 
-export default async (req, res) => {
+const createSiteMap = async (req, res) => {
   try {
+    const smStream = new SitemapStream({
+      hostname: `https://moviepack.vercel.app`,
+      cacheTime: 600000,
+    });
+
+    // List of posts
+    const links = [];
+
     const { data: trendingMovies } = await axios.get(trending_movies_url());
     const { data: nowPlayingMovies } = await axios.get(now_playing_url());
     const { data: upcommingMovies } = await axios.get(upcomming_url());
 
     let allMovies = [];
+
     allMovies = allMovies.concat(
       trendingMovies.results,
       nowPlayingMovies.results,
@@ -27,45 +37,45 @@ export default async (req, res) => {
       };
     });
 
-    const links = [];
-
     moviesLinks.map((movie) => {
       links.push({
         url: `/movies/${movie.id}?name=${movie.name.replace(/ /g, "_")}`,
+      });
+    });
+
+    const staticPages = ["/", "/about-us"];
+
+    staticPages.map((page) => {
+      links.push({ url: page });
+    });
+
+    // Create each URL row
+    links.forEach((link) => {
+      smStream.write({
+        url: link.url,
         changefreq: "daily",
         priority: 0.9,
       });
     });
 
-    // Add other pages
-    const pages = ["/", "/about-us"];
-    pages.map((url) => {
-      links.push({
-        url,
-        changefreq: "daily",
-        priority: 0.9,
-      });
-    });
+    // End sitemap stream
+    smStream.end();
 
-    // Create a stream to write to
-    const stream = new SitemapStream({
-      hostname: `https://${req.headers.host}`,
-      xmlns: {
-        xhtml: true,
-      },
-    });
+    // XML sitemap string
+    const sitemapOutput = (await streamToPromise(smStream)).toString();
 
+    // Change headers
     res.writeHead(200, {
       "Content-Type": "application/xml",
     });
 
-    const xmlString = await streamToPromise(
-      Readable.from(links).pipe(stream)
-    ).then((data) => data.toString());
-
-    res.end(xmlString);
+    // Display output to user
+    res.end(sitemapOutput);
+    fs.writeFileSync("public/sitemap.xml", sitemapOutput);
   } catch (e) {
     console.log(e);
     res.send(JSON.stringify(e));
   }
 };
+
+createSiteMap();
