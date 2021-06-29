@@ -45,10 +45,6 @@ const Layout = ({ children, title }) => {
         />
 
         <title>{title}</title>
-        <meta
-          name="google-site-verification"
-          content="ggFRH2JmlCZ7zFvDxLh1w0zpr6PNuKTWJE3xDady-wo"
-        />
       </Head>
 
       <div> {children} </div>
