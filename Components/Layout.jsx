@@ -43,7 +43,7 @@ const Layout = ({ children, title }) => {
           href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap"
           rel="stylesheet"
         />
-
+        <meta name="google-site-verification" content="3VgE-3kP4wSTh2QG1MAa_C7xomhTSQ4_8FlgF7MmvQs" />
         <title>{title}</title>
       </Head>
 
